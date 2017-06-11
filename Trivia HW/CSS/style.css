@@ -1,0 +1,67 @@
+.jumbotron {
+  box-sizing: border-box;
+  height: 600px;
+  background-image: url("../images/wallpaper.jpg");
+  color: rgb(0,136,206);
+}
+
+.answer {
+  padding-top: 7px;
+  height: 45px;
+  color: rgb(0,136,206);
+  padding-left: 14px;
+  background-color: purple;
+  border-radius: 4px;
+}
+
+.img-wrong {
+  margin-top: 40px;
+}
+
+.first-answer {
+  margin-top: 40px;
+}
+
+.reset-button {
+  margin-top: 40px;
+}
+
+.summary-correct {
+  margin-top: 40px;
+}
+
+body {
+  background: url("../images/wallpaper.jpg");
+
+  color: black;
+}
+
+p{
+  background:purple;
+}
+
+.main-button-container {
+  margin-top: 175px;
+  max-width: 610px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-primary {
+    color: rgb(0,136,206);
+    background-color: purple;
+
+}
+
+.btn-primary:hover {
+    color: black;
+    background-color: orange;
+}
+
+.timer-p {
+  margin-top: 40px;
+}
+
+.answer:hover {
+  background: orange;
+}
