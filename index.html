@@ -1,152 +1,31 @@
 <!DOCTYPE html>
-    <html lang ="en">
-        <head>
-            <meta charset="utf-8">
-            <title>Tokyo Train Schedule</title>
-            <meta name="description" content="">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-            <link rel="stylesheet" href="css/main.css">
-            <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
-            <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-            <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+  <html lang ="en">
+    <head>
 
-        </head>
-        <body>
+        <meta charset="utf-8">
+        <title>Pokemon</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+    </head>
+    <body>
 
-
-         <div class="jumbotron">
-             <h1 class="text-center">Train Station</h1>
-         </div>
-
-         <div class="container schedule-container">
-              <div class="row">
-
-
-                  <div class="col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
-                       <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                 <h3 class="panel-title">Current Train Schedule</h3>
-                            </div>
-                            <div class="panel-body">
-
-
-                            <table class="train-schedule">
-                                 <tr>
-                                      <th class="col-xs-3">Train Name</th>
-                                      <th class="col-xs-2">Destination</th>
-                                      <th class="col-xs-2">Frequency (min)</th>
-                                      <th class="col-xs-2">Next Arrival</th>
-                                      <th class="col-xs-2">Minutes Away</th>
-                                 </tr>
-                            </table>
-
-                            </div>
-                       </div>
-                  </div>
-             </div>
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row">
+          <h1 class="text-center">Pokemon Trivia Game!</h1>
+          <div class="mainArea col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+          </div>
         </div>
+      </div>
+    </div>
 
-         <div class="container input-container">
-              <div class="row">
+    <div class="container">
 
-                  <div class="col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
-                       <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                 <h3 class="panel-title">Add Train</h3>
-                            </div>
-                            <div class="panel-body">
-
-                                 <form role="form">
-                                   <div class="form-group">
-                                     <label for="text">Train</label>
-                                     <input type="text" class="form-control" id="name1">
-                                   </div>
-                                   <div class="form-group">
-                                     <label for="text">Destination</label>
-                                     <input type="text" class="form-control" id="destination1">
-                                   </div>
-                                   <div class="form-group">
-                                     <label for="text">First Train Time (hh:mm)</label>
-                                     <input type="text" class="form-control" id="firstTrain1">
-                                   </div>
-                                   <div class="form-group">
-                                     <label for="comment">Frequency (min)</label>
-                                     <input type="text" class="form-control" id="frequency1">
-                                   </div>
-                                   <button type="submit" class="btn btn-primary" id="createTrain">Submit</button>
-                                 </form>
-
-                            </div>
-                       </div>
-                  </div>
-             </div>
-        </div>
-        <script type="text/javascript">
-
-            var link ="https://my-train-schedule.firebaseio.com/";
-            var dataRef = new Firebase(link);
-            var name ="";
-            var destination = "";
-            var firstTrain = "";
-            var frequency = "";
-            var nextTrain = "";
-            var nextTrain_1 = "";
-            var minutesAway = "";
-            var convertedTime = "";
-            var currTime = "";
-            var difference = "";
-            var modNum = "";
-            var timeToNext = "";
-            var key = "";
-            var getKey = "";
-            $(document).ready(function() {
-                    $("#createTrain").on("click", function() {
-
-                        name = $('#name-input').val().trim();
-                        destination = $('#destination-input').val().trim();
-                        firstTrain = $('#first-train-time-input').val().trim();
-                        frequency = $('#frequency-input').val().trim();
-                        convertedTime = moment(firstTrain, "hh:mm").subtract(1, "years");
-                        currTime = moment();
-                        difference = moment().diff(moment(convertedTime), "minutes");
-                        modNum = difference % frequency;
-                        timeToNext = frequency - modNum;
-                        nextTrain = moment().add(timeToNext, "minutes");
-                        nextTrain_1 = moment(nextTrain).format("hh:mm");
-
-                        key = dataRef.push({
-                            name: name,
-                            destination: destination,
-                            firstTrain: firstTrain,
-                            frequency: frequency,
-                            nextTrain_1: nextTrain_1,
-                            timeToNext: timeToNext
-                        });
-
-                        $('#name1').val('');
-                        $('#destination1').val('');
-                        $('#firstTrain1').val('');
-                        $('#frequency1').val('');
-                        return false;
-                   });
-
-                    dataRef.on("child_added", function(childSnapshot) {
-                        $('.train-schedule').append("<tr class='table-row' id=" + "'" + childSnapshot.key() + "'" + ">" +
-                         "<td class='col-xs-3'>" + childSnapshot.val().name + "</td>" +
-                         "<td class='col-xs-2'>" + childSnapshot.val().destination + "</td>" +
-                         "<td class='col-xs-2'>" + childSnapshot.val().frequency + "</td>" +
-                         "<td class='col-xs-2'>" + childSnapshot.val().nextTrain_1 + "</td>" +
-                         "<td class='col-xs-2'>" + childSnapshot.val().timeToNext + "</td>" +
-                         "<td class='col-xs-1'>" + "<input type='submit' value='remove train' class='remove-train btn btn-primary btn-sm'>" + "</td>" +"</tr>");
-                    });
-                    $("body").on("click", ".remove-train", function(){
-                        $(this).closest ('tr').remove();
-                        getKey = $(this).parent().parent().attr('id');
-                        dataRef.child(getKey).remove();
-                    });
-                });
-            </script>
-        </body>
-</html>
+    </div>
+        <script src="js/app.js"></script>
+    </body>
+  </html>
