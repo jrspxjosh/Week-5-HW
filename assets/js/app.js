@@ -7,13 +7,13 @@ var questions = ["What is starter pokemon that is a fire type?", "What is starte
 var answerArray = [["Charmander", "Bulbasaur", "Squirtle", "Pikachu"], ["Charmander", "Bulbasaur", "Pikachu", "Squirtle"], ["Charmander", "Bulbasaur", "Pikachu", "Squirtle"], ["Charmander", "Bulbasaur", "Squirtle", "Pikachu"], ["Onyx", "Geodude", "Squirtle", "Pikachu"], ["Goldeen", "Garados", "Starmie", "Magikarp"], ["Red", "Blue", "Gary", "May"]];
 
 var imageArray =
-["<img class='center-block img-right' src='images/Charmander.jpg'>",
-"<img class='center-block img-right' src='images/Bulbasaur.jpg'>",
-"<img class='center-block img-right' src='images/Squirtle.png'>",
-"<img class='center-block img-right' src='images/pikachu.jpg'>",
-"<img class='center-block img-right' src='images/onyx.jpg'>",
-"<img class='center-block img-right' src='images/goldeen.jpg'>",
- "<img class='center-block img-right' src='images/gary.jpg'>"];
+["<img class='center-block img-right' src='assets/images/Charmander.jpg'>",
+"<img class='center-block img-right' src='assets/images/Bulbasaur.jpg'>",
+"<img class='center-block img-right' src='assets/images/Squirtle.png'>",
+"<img class='center-block img-right' src='assets/images/pikachu.jpg'>",
+"<img class='center-block img-right' src='assets/images/onyx.jpg'>",
+"<img class='center-block img-right' src='assets/images/goldeen.jpg'>",
+ "<img class='center-block img-right' src='assets/images/gary.jpg'>"];
 
 var correctAnswers = ["A. Charmander", "B. Bulbasaur", "D. Squirtle", "D. Pikachu", "A. Onyx", "A. Goldeen", "C. Gary"];
 
